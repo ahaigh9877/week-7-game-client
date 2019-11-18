@@ -1,13 +1,11 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { getUsers, createUser } from "../actions/users";
-import Signup from "./Signup";
+import { login } from "../../actions/users";
+import Login from "./Login";
 
-class SignupContainer extends Component {
+class LoginContainer extends Component {
   state = { username: "", password: "" };
-  componentDidMount() {
-    this.props.getUsers();
-  }
+
   onChange = event => {
     this.setState({
       [event.target.name]: event.target.value
@@ -16,7 +14,7 @@ class SignupContainer extends Component {
   onSubmit = event => {
     event.preventDefault();
 
-    this.props.createUser(this.state);
+    this.props.login(this.state.username, this.state.password);
 
     this.setState({
       username: "",
@@ -25,7 +23,7 @@ class SignupContainer extends Component {
   };
   render() {
     return (
-      <Signup
+      <Login
         onSubmit={this.onSubmit}
         onChange={this.onChange}
         values={this.state}
@@ -35,9 +33,9 @@ class SignupContainer extends Component {
 }
 
 function mapStateToProps(state) {
-  return { users: state.users };
+  return { loggedin: state.loggedin };
 }
 
-const mapDispatchToProps = { getUsers, createUser };
+const mapDispatchToProps = { login };
 
-export default connect(mapStateToProps, mapDispatchToProps)(SignupContainer);
+export default connect(mapStateToProps, mapDispatchToProps)(LoginContainer);

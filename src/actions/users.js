@@ -1,6 +1,6 @@
 import request from "superagent";
 
-export const JWT = "JWT";
+export const USER_LOGIN = "USER_LOGIN";
 export const ALL_USERS = "ALL_USERS";
 export const NEW_USER = "NEW_USER";
 
@@ -50,20 +50,20 @@ export const createUser = data => (dispatch, getState) => {
     .catch(console.error);
 };
 
-// function userLogin(payload) {
-//   return {
-//     type: JWT,
-//     payload
-//   };
-// }
+function userLogin(payload) {
+  return {
+    type: USER_LOGIN,
+    payload
+  };
+}
 
-// export const login = (email, password) => dispatch => {
-//   request
-//     .post(`${baseUrl}/login`)
-//     .send({ email, password })
-//     .then(response => {
-//       const action = userLogin(response.body.jwt);
-//       dispatch(action);
-//     })
-//     .catch(console.error);
-// };
+export const login = (username, password) => dispatch => {
+  request
+    .post(`${baseUrl}/login`)
+    .send({ username, password })
+    .then(response => {
+      const action = userLogin(response.body.username);
+      dispatch(action);
+    })
+    .catch(console.error);
+};

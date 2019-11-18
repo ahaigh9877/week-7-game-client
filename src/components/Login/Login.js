@@ -1,8 +1,10 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
-const Signup = props => {
+const Login = props => {
   return (
     <div>
+      <h1>Log In </h1>
       <form onSubmit={props.onSubmit}>
         <label>
           Username:
@@ -22,10 +24,13 @@ const Signup = props => {
             onChange={props.onChange}
           />
         </label>
-        <input type="submit" value="Sign Up" />
+        <input type="submit" value="Login" />
       </form>
+      <button>
+        <Link to={"/"}>Back to Welcome Pag</Link>e
+      </button>
     </div>
   );
 };
 
-export default Signup;
+export default Login;
