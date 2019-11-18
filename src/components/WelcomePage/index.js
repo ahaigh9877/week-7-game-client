@@ -8,12 +8,12 @@ const WelcomePage = () => {
       <br />
       <p>Create a new user account for free!</p>
       <button>
-        <Link to={"/signup"}>Signup </Link>
+        <Link to={"/signup"}>Sign up </Link>
       </button>
       <br />
       <p>I am an existing user</p>
       <button>
-        <Link to={"/login"}>Login</Link>
+        <Link to={"/login"}>Log in</Link>
       </button>
     </div>
   );

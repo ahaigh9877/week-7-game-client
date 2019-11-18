@@ -6,6 +6,7 @@ import { Route } from "react-router-dom";
 import SignupContainer from "./components/Signup/";
 import LoginContainer from "./components/Login/";
 import WelcomePage from "./components/WelcomePage/";
+import Lobby from "./components/Lobby/";
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
         <Route exact path="/" component={WelcomePage} />
         <Route path="/signup" component={SignupContainer} />
         <Route path="/login" component={LoginContainer} />
+        <Route path="/lobby" component={Lobby} />
       </div>
     </Provider>
   );

@@ -27,7 +27,7 @@ const Signup = props => {
         <input type="submit" value="Sign Up" />
       </form>
       <button>
-        <Link to={"/"}>Back to Welcome Pag</Link>e
+        <Link to={"/"}>Back to Welcome Page</Link>
       </button>
     </div>
   );

@@ -2,9 +2,10 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { getUsers, createUser } from "../../actions/users";
 import Signup from "./Signup";
+import { Redirect } from "react-router-dom";
 
 class SignupContainer extends Component {
-  state = { username: "", password: "" };
+  state = { username: "", password: "", redirect: false };
   componentDidMount() {
     this.props.getUsers();
   }
@@ -20,10 +21,14 @@ class SignupContainer extends Component {
 
     this.setState({
       username: "",
-      password: ""
+      password: "",
+      redirect: true
     });
   };
   render() {
+    if (this.state.redirect) {
+      return <Redirect to="/login" />;
+    }
     return (
       <Signup
         onSubmit={this.onSubmit}
