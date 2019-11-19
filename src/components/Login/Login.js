@@ -35,11 +35,14 @@ const Login = props => {
       </div>
     );
   } else {
+    console.log("props loggedin", props.loggedin);
     return (
       <div>
-        <h2>Logged in successfully as {props.loggedin[0]}</h2>
+        <h2>Logged in successfully as {props.loggedin.username}</h2>
         <h3>Go to lobby to start a new game</h3>
-        <button><Link to={'/lobby'}>Games Lobby</Link></button>
+        <button>
+          <Link to={"/lobby"}>Games Lobby</Link>
+        </button>
       </div>
     );
   }
