@@ -24,9 +24,9 @@ class LoginContainer extends Component {
     });
   };
   render() {
-    // if (this.state.redirect) {
-    //   <Redirect to={"/lobby"} />;
-    // }
+    if (this.state.redirect) {
+      return <Redirect to={"/lobby"} />;
+    }
     return (
       <Login
         onSubmit={this.onSubmit}

@@ -3,7 +3,7 @@ import Lobby from "./Lobby";
 
 class index extends Component {
   render() {
-    return;
+    return <Lobby />;
   }
 }
 
