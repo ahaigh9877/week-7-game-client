@@ -2,10 +2,10 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { login } from "../../actions/users";
 import Login from "./Login";
-import { Redirect } from "react-router-dom";
 
 class LoginContainer extends Component {
-  state = { username: "", password: "", redirect: false };
+  state = { username: "", password: "", 
+ };
 
   onChange = event => {
     this.setState({
@@ -20,13 +20,10 @@ class LoginContainer extends Component {
     this.setState({
       username: "",
       password: "",
-      redirect: true
     });
   };
   render() {
-    if (this.state.redirect) {
-      return <Redirect to={"/lobby"} />;
-    }
+    
     return (
       <Login
         onSubmit={this.onSubmit}

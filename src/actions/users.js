@@ -3,6 +3,7 @@ import request from "superagent";
 export const USER_LOGIN = "USER_LOGIN";
 export const ALL_USERS = "ALL_USERS";
 export const NEW_USER = "NEW_USER";
+export const ERROR = "ERROR";
 
 // const baseUrl = "https://serene-harbor-35844.herokuapp.com/";
 const baseUrl = "http://localhost:4000";
@@ -57,6 +58,13 @@ function userLogin(payload) {
   };
 }
 
+function error(payload) {
+  return {
+    type: ERROR,
+    payload
+  };
+}
+
 export const login = (username, password) => dispatch => {
   request
     .post(`${baseUrl}/login`)
@@ -65,5 +73,9 @@ export const login = (username, password) => dispatch => {
       const action = userLogin(response.body.username);
       dispatch(action);
     })
-    .catch(console.error);
+    .catch(errorResponse => {
+      console.error(errorResponse);
+      const action = error("Wrong password or username. Please try again.");
+      dispatch(action);
+    });
 };
