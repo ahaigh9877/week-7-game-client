@@ -4,8 +4,11 @@ import { login } from "../../actions/users";
 import User from "./User";
 // import { Redirect } from "react-router-dom";
 
+// const logout = function (){
+
+// }
+
 class UserContainer extends Component {
- 
   render() {
     return <User loggedin={this.props.loggedin} />;
   }
