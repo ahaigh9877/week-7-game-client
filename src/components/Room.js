@@ -1,31 +1,70 @@
 import React from "react";
 import { connect } from "react-redux";
 import superagent from "superagent";
+import { Link } from "react-router-dom";
 
 class Room extends React.Component {
+  state = { categories: [], token: "" };
+
+  async componentDidMount() {
+    const response = await superagent.get(
+      "https://opentdb.com/api_token.php?command=request"
+    );
+    const token = response.body.token;
+    const categories = await superagent.get(
+      "https://opentdb.com/api_category.php"
+    );
+    const categoryNames = categories.body.trivia_categories.map(
+      category => category.name
+    );
+    console.log(categoryNames);
+    this.setState({ categories: categoryNames, token: token });
+  }
+
   onClick = async () => {
     const { name } = this.props.match.params;
     const { jwt } = this.props;
-    const response = await superagent
-      .put(`http://localhost:4000/join/${name}`)
-      .set({ authorization: `Bearer ${jwt}` });
-    console.log("respose test: ", response);
+    const { rooms } = this.props;
+    const room = rooms.find(room => room.name === name);
+    const { users } = room;
+    console.log("users: ", users);
+    if (users.length < 2) {
+      const response = await superagent
+        .put(`http://localhost:4000/join/${name}`)
+        .set({ authorization: `Bearer ${jwt}` });
+
+      console.log("respose test: ", response);
+    } else {
+      console.log("too many users");
+      return <p></p>;
+    }
   };
   render() {
     const { name } = this.props.match.params;
+    console.log("name test: ", name);
     const { rooms } = this.props;
     console.log("rooms test: ", rooms);
     // find the room we're in using the name extracted from params or props or whatever.
     const room = rooms.find(room => room.name === name);
-    // if (!room) {
-    //   return "this room doesn't exist";
-    // }
+    if (!room) {
+      return <p>this room doesn't exist"</p>;
+    }
     const { users } = room;
     console.log("users: ", users);
+    if (users.length === 2) {
+      return (
+        <div>
+          <p>This room is full!</p>
+          <Link to="/lobby">Back to the lobby.</Link>
+        </div>
+      );
+    }
     const list =
-      users && users.length
-        ? users.map(user => <p key={user.username}>{user.username}</p>)
-        : "This room has no users";
+      users && users.length ? (
+        users.map(user => <p key={user.username}>{user.username}</p>)
+      ) : (
+        <p>This room has no users"</p>
+      );
     console.log("ROOM???", room);
     return (
       <div>

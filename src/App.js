@@ -19,7 +19,7 @@ class App extends React.Component {
       const parsed = JSON.parse(data);
       console.log("event test: ", parsed);
 
-      this.props.dispatch(parsed)
+      this.props.dispatch(parsed);
     };
   }
 
@@ -29,9 +29,9 @@ class App extends React.Component {
         <Route exact path="/" component={WelcomePage} />
         <Route path="/signup" component={SignupContainer} />
         <Route path="/login" component={LoginContainer} />
-        <Route path="/lobby" component={Lobby} />
         <Route path="/lobby" component={UserContainer} />
-        <Route path='/room/:name' component={Room} />
+        <Route path="/lobby" component={Lobby} />
+        <Route path="/room/:name" component={Room} />
       </div>
     );
   }
