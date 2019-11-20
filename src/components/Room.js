@@ -53,16 +53,13 @@ class Room extends React.Component {
 
   render() {
     const { name } = this.props.match.params;
-    console.log("name test: ", name);
     const { rooms } = this.props;
-    console.log("rooms test: ", rooms);
     // find the room we're in using the name extracted from params or props or whatever.
     const room = rooms.find(room => room.name === name);
     if (!room) {
-      return <p>this room doesn't exist"</p>;
+      return <p>This room doesn't exist</p>;
     }
     const { users } = room;
-    console.log("users: ", users);
     if (users.length === 2) {
       return (
         <div>
@@ -70,17 +67,17 @@ class Room extends React.Component {
           <Link to="/lobby">Back to the lobby.</Link>
         </div>
       );
-    }
-    const list =
+    } else {
+
+      const list =
       users && users.length ? (
         users.map(user => <p key={user.username}>{user.username}</p>)
-      ) : (
-        <p>This room has no users"</p>
-      );
-    console.log("ROOM???", room);
-
-    return (
-      <div>
+        ) : (
+          <p>This room has no users</p>
+          );
+          
+          return (
+            <div>
         <h1>{name}</h1>
         <button onClick={this.onClick}>Join</button>
         <button onClick={this.leaveRoom}>
@@ -89,6 +86,7 @@ class Room extends React.Component {
         {list}
       </div>
     );
+  }
   }
 }
 
