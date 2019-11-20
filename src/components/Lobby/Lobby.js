@@ -6,11 +6,15 @@ class Lobby extends React.Component {
     const { rooms } = this.props;
 
     const roomsList = rooms.map(room => {
-      return (
-        <p key={room.name}>
-          <Link to={`/room/${room.name}`}>{room.name}</Link>
-        </p>
-      );
+      if (room.users.length === 2) {
+        return <p>Room Name: {room.name} --ROOM IS FULL</p>;
+      } else {
+        return (
+          <p key={room.name}>
+            <Link to={`/room/${room.name}`}>{room.name}</Link>
+          </p>
+        );
+      }
     });
     return (
       <div>

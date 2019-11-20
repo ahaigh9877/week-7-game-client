@@ -60,12 +60,17 @@ class Room extends React.Component {
       return <p>This room doesn't exist</p>;
     }
     const { users } = room;
-    if (users.length === 2) {
+    if (users.length === 2 ) {
       return (
-        <div>
-          <p>This room is full!</p>
-          <Link to="/lobby">Back to the lobby.</Link>
-        </div>
+        // <div>
+        //   <p>This room is full!</p>
+        //   <Link to="/lobby">Back to the lobby.</Link>
+        // </div>
+
+        <p>
+          HERE GOES THE GAME Component
+        </p>
+
       );
     } else {
 
@@ -79,7 +84,7 @@ class Room extends React.Component {
           return (
             <div>
         <h1>{name}</h1>
-        <button onClick={this.onClick}>Join</button>
+        <button onClick={this.onClick}>Start game</button>
         <button onClick={this.leaveRoom}>
           <Link to="/lobby">Leave room</Link>
         </button>
