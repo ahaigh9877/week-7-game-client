@@ -3,11 +3,8 @@ import { Link } from "react-router-dom";
 
 class Lobby extends React.Component {
   render() {
-    const { rooms, users } = this.props;
-    const loggedInUsers = users.filter(user => user.loggedin === false);
-    const onlineUsers = loggedInUsers.map(user => {
-      return <p key={user.id}>{user.username}</p>;
-    });
+    const { rooms } = this.props;
+
     const roomsList = rooms.map(room => {
       return (
         <p key={room.name}>
@@ -31,7 +28,6 @@ class Lobby extends React.Component {
           <input type="submit" value="Create" />
         </form>
         {roomsList}
-        {onlineUsers}
       </div>
     );
   }

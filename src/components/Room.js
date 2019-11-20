@@ -40,6 +40,17 @@ class Room extends React.Component {
       return <p></p>;
     }
   };
+
+  leaveRoom = async () => {
+    const { name } = this.props.match.params;
+    const { jwt } = this.props;
+
+    await superagent
+      // .put(`https://evening-fortress-04185.herokuapp.com/join/${name}`)
+      .put(`http://localhost:4000/leave/${name}`)
+      .set({ authorization: `Bearer ${jwt}` });
+  };
+
   render() {
     const { name } = this.props.match.params;
     console.log("name test: ", name);
@@ -72,6 +83,9 @@ class Room extends React.Component {
       <div>
         <h1>{name}</h1>
         <button onClick={this.onClick}>Join</button>
+        <button onClick={this.leaveRoom}>
+          <Link to="/lobby">Leave room</Link>
+        </button>
         {list}
       </div>
     );
