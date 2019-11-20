@@ -2,10 +2,12 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { newRoom } from "../../actions/rooms";
 import Lobby from './Lobby'
-
+import {getUsers} from '../../actions/users'
 class LobbyContainer extends Component {
   state = { name: ""};
-
+  componentDidMount() {
+    this.props.getUsers();
+  }
   onChange = event => {
     this.setState({
       [event.target.name]: event.target.value
@@ -34,9 +36,10 @@ class LobbyContainer extends Component {
 }
 
 function mapStateToProps(state) {
-  return { rooms: state.rooms };
+  return { rooms: state.rooms,
+  users: state.users };
 }
 
-const mapDispatchToProps = { newRoom };
+const mapDispatchToProps = { getUsers, newRoom };
 
 export default connect(mapStateToProps, mapDispatchToProps)(LobbyContainer);
