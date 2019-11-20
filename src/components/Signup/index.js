@@ -19,11 +19,13 @@ class SignupContainer extends Component {
 
     this.props.createUser(this.state);
 
-    this.setState({
-      username: "",
-      password: "",
-      redirect: true
-    });
+    if (this.state.username !== "" && this.state.password !== "") {
+      this.setState({
+        username: "",
+        password: "",
+        redirect: true
+      });
+    }
   };
   render() {
     if (this.state.redirect) {
