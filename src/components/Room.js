@@ -66,6 +66,7 @@ class Room extends React.Component {
         <p>This room has no users"</p>
       );
     console.log("ROOM???", room);
+
     return (
       <div>
         <h1>{name}</h1>

@@ -1,11 +1,11 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { newRoom } from "../../actions/rooms";
-import Lobby from "./Lobby";
-import { getUsers } from "../../actions/users";
+import Lobby from './Lobby'
+import {getUsers} from '../../actions/users'
 
 class LobbyContainer extends Component {
-  state = { name: "" };
+  state = { name: ""};
   componentDidMount() {
     this.props.getUsers();
   }
@@ -15,6 +15,7 @@ class LobbyContainer extends Component {
       [event.target.name]: event.target.value
     });
   };
+
   onSubmit = event => {
     event.preventDefault();
 
@@ -24,6 +25,7 @@ class LobbyContainer extends Component {
       name: ""
     });
   };
+
   render() {
     return (
       <Lobby

@@ -36,12 +36,9 @@ function newUser(payload) {
   };
 }
 
-export const createUser = data => (dispatch, getState) => {
-  // const state = getState();
-
+export const createUser = data => (dispatch) => {
   request
     .post(`${baseUrl}/user`)
-    // .set("Authorization", `Bearer ${state.user}`)
     .send(data)
     .then(response => {
       const user = response.body.user;
@@ -67,16 +64,15 @@ function error(payload) {
 }
 
 export const login = (username, password) => (dispatch, getState) => {
-  const state = getState();
+  const state = getState()
   request
     .post(`${baseUrl}/login`)
-    .set("Authorization", `Bearer ${state.loggedin.jwt}`)
+    .set('Authorization', `Bearer ${state.loggedin.jwt}`)
     .send({ username, password })
     .then(response => {
-      console.log("response, ", response);
-      const username = response.body.user.username;
-      const jwt = response.body.jwt;
-      const action = userLogin({ username, jwt });
+      const username = response.body.user.username
+      const jwt = response.body.jwt
+      const action = userLogin({ username, jwt});
       dispatch(action);
     })
     .catch(errorResponse => {
