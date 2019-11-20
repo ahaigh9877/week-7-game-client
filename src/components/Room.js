@@ -30,7 +30,7 @@ class Room extends React.Component {
     console.log("users: ", users);
     if (users.length < 2) {
       const response = await superagent
-        .put(`http://localhost:4000/join/${name}`)
+        .put(`https://evening-fortress-04185.herokuapp.com/join/${name}`)
         .set({ authorization: `Bearer ${jwt}` });
 
       console.log("respose test: ", response);

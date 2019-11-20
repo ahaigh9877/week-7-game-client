@@ -10,7 +10,9 @@ import UserContainer from "./components/User";
 import Room from "./components/Room";
 
 class App extends React.Component {
-  stream = new EventSource("http://localhost:4000/stream");
+  stream = new EventSource(
+    "https://evening-fortress-04185.herokuapp.com/stream"
+  );
 
   componentDidMount() {
     this.stream.onmessage = event => {

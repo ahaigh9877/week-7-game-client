@@ -5,8 +5,7 @@ export const ALL_USERS = "ALL_USERS";
 export const NEW_USER = "NEW_USER";
 export const ERROR = "ERROR";
 
-// const baseUrl = "https://serene-harbor-35844.herokuapp.com/";
-const baseUrl = "http://localhost:4000";
+const baseUrl = "https://evening-fortress-04185.herokuapp.com";
 
 function allUsers(payload) {
   return {
@@ -36,7 +35,7 @@ function newUser(payload) {
   };
 }
 
-export const createUser = data => (dispatch) => {
+export const createUser = data => dispatch => {
   request
     .post(`${baseUrl}/user`)
     .send(data)
@@ -64,15 +63,15 @@ function error(payload) {
 }
 
 export const login = (username, password) => (dispatch, getState) => {
-  const state = getState()
+  const state = getState();
   request
     .post(`${baseUrl}/login`)
-    .set('Authorization', `Bearer ${state.loggedin.jwt}`)
+    .set("Authorization", `Bearer ${state.loggedin.jwt}`)
     .send({ username, password })
     .then(response => {
-      const username = response.body.user.username
-      const jwt = response.body.jwt
-      const action = userLogin({ username, jwt});
+      const username = response.body.user.username;
+      const jwt = response.body.jwt;
+      const action = userLogin({ username, jwt });
       dispatch(action);
     })
     .catch(errorResponse => {
