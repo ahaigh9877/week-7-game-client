@@ -1,29 +1,18 @@
 import React, { Component } from "react";
+import { connect } from "react-redux";
 import Game from "./Game";
 
 class GameContainer extends Component {
-  state = {
-    player1: { name: "", points: null, choice: "" }
+  //   state = {
+  //     player1: { name: "", points: null, choice: "" }
+  //   };
+
+  choose = playerChoice => {
+    console.log("choice: ", playerChoice);
+    //return this.setState({ choice: playerChoice });
   };
 
-  choose = choice => {
-    switch (choice) {
-      case 1: {
-        return;
-      }
-      case 2: {
-        return;
-      }
-      case 3: {
-        return;
-      }
-      default: {
-        break;
-      }
-    }
-  };
-
-  async componentDidMount() {}
+  componentDidMount() {}
   render() {
     return (
       <div>
@@ -33,4 +22,8 @@ class GameContainer extends Component {
   }
 }
 
-export default GameContainer;
+function mapStateToProps(reduxState) {
+  return { jwt: reduxState.loggedin.jwt, rooms: reduxState.rooms };
+}
+
+export default connect(mapStateToProps)(GameContainer);
