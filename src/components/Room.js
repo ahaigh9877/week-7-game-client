@@ -46,13 +46,8 @@ class Room extends React.Component {
     const { users } = room;
     if (users.length === 2) {
       return (
-        // <div>
-        //   <p>This room is full!</p>
-        //   <Link to="/lobby">Back to the lobby.</Link>
-        // </div>
-
         <div>
-          <GameContainer />
+          <GameContainer match={this.props.match} />
         </div>
       );
     } else {
