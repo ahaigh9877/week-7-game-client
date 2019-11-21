@@ -12,7 +12,19 @@ class GameContainer extends Component {
     console.log(playerChoice)
     this.setState({ choice: playerChoice})
   };
+  setChoice = async () => {
+    const choice = this.state.choice
+    console.log('i was chosen')
+    const { username, jwt } = this.props.loggedin;
 
+    await superagent
+      // .put(`https://evening-fortress-04185.herokuapp.com/join/${name}`)
+      .put(`http://localhost:4000/game/${username}/${choice}`)
+      .set({ authorization: `Bearer ${jwt}` })
+      .send(choice)
+    }
+  
+ 
   render() {
     return (
       <div>

@@ -13,15 +13,10 @@ class Room extends React.Component {
     const { users } = room;
     console.log("users: ", users);
     if (users.length < 2) {
-      const response = await superagent
+      await superagent
         // .put(`https://evening-fortress-04185.herokuapp.com/join/${name}`)
         .put(`http://localhost:4000/join/${name}`)
         .set({ authorization: `Bearer ${jwt}` });
-
-      console.log("respose test: ", response);
-    } else {
-      console.log("too many users");
-      return <p></p>;
     }
   };
 

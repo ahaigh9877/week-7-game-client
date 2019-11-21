@@ -26,11 +26,10 @@ class Game extends Component {
 
     const imFirst = first === user
 
-
     return (
       <div id="gameWrapper">
-        <div id="player1Score">{first.username} score: {first.score}</div>
-        <div id="player2Score">{second.username} score: {second.score}</div>
+        <div id="player1Score">{first.username}'s score: {first.score}</div>
+        <div id="player2Score">{second.username}'s score: {second.score}</div>
         
         <div id="player1ChoiceImageWrapper">
           <img className="questionMark" src={questionMark} alt="choice 1" />
@@ -42,20 +41,20 @@ class Game extends Component {
         <h1 id="choiceHeading">Make your choice</h1>
 
         <div id="choicesWrapper">
-          <button className="selectButton" onClick={() => this.props.choose("rock")}>
+          <button className="selectButton" onClick={() => this.props.choose(1)}>
             <img className="choiceImg" src={paper} alt="choice 1" />
           </button>
-          <button className="selectButton" onClick={() => this.props.choose("paper")}>
+          <button className="selectButton" onClick={() => this.props.choose(2)}>
             <img className="choiceImg" src={rock} alt="choice 2" />
           </button>
           <button
             className="selectButton"
-            onClick={() => this.props.choose("scissors")}
+            onClick={() => this.props.choose(3)}
           >
             <img className="choiceImg" src={scissors} alt="choice 3" />
           </button>
         </div>
-        <button id="chooseButton" onClick={()=> this.props.setChoice()}>CHOOSE!</button>
+        <button id="chooseButton" onClick={() => this.props.setChoice()}>CHOOSE!</button>
       </div>
     );
   }
