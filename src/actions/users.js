@@ -49,7 +49,6 @@ export const createUser = data => dispatch => {
 };
 
 function userLogin(payload) {
-  console.log("login payload: ", payload);
   return {
     type: USER_LOGIN,
     payload
