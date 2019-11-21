@@ -1,0 +1,68 @@
+#gameWrapper {
+  position: relative;
+  margin: 20px auto;
+  border: 2px solid goldenrod;
+  background-color: lightgoldenrodyellow;
+  height: 450px;
+  width: 500px;
+}
+
+#player1Score {
+  position: absolute;
+  background-color: lightgreen;
+  padding: 10px;
+  left: 5%;
+  top: 5%;
+}
+
+#player2Score {
+  position: absolute;
+  background-color: lightgreen;
+  padding: 10px;
+  right: 5%;
+  top: 5%;
+}
+
+#choiceHeading {
+  position: absolute;
+  left: 0;
+  top: 12%;
+  width: 100%;
+  color: blue;
+}
+
+#player1ChoiceImageWrapper {
+  position: absolute;
+  top: 30%;
+  left: 35%;
+  width: 60px;
+  height: 60px;
+  background-color: lightgrey;
+}
+
+#player2ChoiceImageWrapper {
+  position: absolute;
+  top: 30%;
+  right: 35%;
+  width: 60px;
+  height: 60px;
+  background-color: lightgrey;
+}
+
+#choicesWrapper {
+  position: absolute;
+  top: 55%;
+  left: 25%;
+  width: 50%;
+  height: 60px;
+  background-color: lightgrey;
+}
+
+#choiceButton {
+  position: absolute;
+  bottom: 10%;
+  left: calc(50% - 100px);
+  width: 200px;
+  height: 50px;
+  font-size: x-large;
+}
