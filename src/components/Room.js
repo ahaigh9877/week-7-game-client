@@ -11,7 +11,7 @@ class Room extends React.Component {
     const { rooms } = this.props;
     const room = rooms.find(room => room.name === name);
     const { users } = room;
-    console.log("users: ", users);
+
     if (users.length < 2) {
       await superagent
         // .put(`https://evening-fortress-04185.herokuapp.com/join/${name}`)
@@ -42,7 +42,8 @@ class Room extends React.Component {
     if (users.length === 2) {
       return (
         <div>
-          <GameContainer match={this.props.match} />
+          <GameContainer match={this.props.match}
+          leaveRoom={this.leaveRoom} />
         </div>
       );
     } else {
@@ -56,8 +57,8 @@ class Room extends React.Component {
       return (
         <div>
           <h1>{name}</h1>
-          <button onClick={this.onClick}>Start game</button>
-          <button onClick={this.leaveRoom}>
+          <button onClick={() => this.onClick()}>Start game</button>
+          <button onClick={() => this.leaveRoom()}>
             <Link to="/lobby">Leave room</Link>
           </button>
           {list}

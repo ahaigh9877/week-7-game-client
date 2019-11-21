@@ -19,7 +19,6 @@ class App extends React.Component {
       const { data } = event;
 
       const parsed = JSON.parse(data);
-      console.log("event test: ", parsed);
 
       this.props.dispatch(parsed);
     };

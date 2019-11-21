@@ -35,7 +35,6 @@ const Login = props => {
       </div>
     );
   } else {
-    console.log("props loggedin", props.loggedin);
     return (
       <div>
         <h2>Logged in successfully as {props.loggedin.username}</h2>
