@@ -7,32 +7,55 @@ import questionMark from "../../images/question.png";
 
 class Game extends Component {
   render() {
+    const {
+      match: { params: { name } },
+      loggedin: { username },
+      rooms
+    } = this.props
+    // const name = this.props.match.params.name
+    // const username = this.props.loggedin.username
+
+    const room = rooms.find(room => room.name === name)
+    const user = room.users.find(user => user.username === username)
+    const index = room.users.findIndex(user => user.username === username)
+    const other = room.users.find(user => user.username !== username)
+
+    const [first, second] = room.users
+    // const first = room.users[0]
+    // const second = room.user[1]
+
+    const imFirst = first === user
+
+
     return (
       <div id="gameWrapper">
-        <div id="player1Score">Player1 score: </div>
-        <div id="player2Score">Player2 score: </div>
+        <div id="player1Score">{first.username} score: {first.score}</div>
+        <div id="player2Score">{second.username} score: {second.score}</div>
+        
         <div id="player1ChoiceImageWrapper">
           <img className="questionMark" src={questionMark} alt="choice 1" />
         </div>
         <div id="player2ChoiceImageWrapper">
           <img className="questionMark" src={questionMark} alt="choice 2" />
         </div>
+
         <h1 id="choiceHeading">Make your choice</h1>
+
         <div id="choicesWrapper">
-          <button className="selectButton" onClick={this.props.choose("rock")}>
+          <button className="selectButton" onClick={() => this.props.choose("rock")}>
             <img className="choiceImg" src={paper} alt="choice 1" />
           </button>
-          <button className="selectButton" onClick={this.props.choose("paper")}>
+          <button className="selectButton" onClick={() => this.props.choose("paper")}>
             <img className="choiceImg" src={rock} alt="choice 2" />
           </button>
           <button
             className="selectButton"
-            onClick={this.props.choose("scissors")}
+            onClick={() => this.props.choose("scissors")}
           >
             <img className="choiceImg" src={scissors} alt="choice 3" />
           </button>
         </div>
-        <button id="chooseButton">CHOOSE!</button>
+        <button id="chooseButton" onClick={()=> this.props.setChoice()}>CHOOSE!</button>
       </div>
     );
   }
