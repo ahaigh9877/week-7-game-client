@@ -9,7 +9,10 @@
 
 #player1Score {
   position: absolute;
-  background-color: lightgreen;
+  background-color: mediumaquamarine;
+  width: 120px;
+  height: 120px;
+  border-radius: 100px;
   padding: 10px;
   left: 5%;
   top: 5%;
@@ -17,10 +20,18 @@
 
 #player2Score {
   position: absolute;
-  background-color: lightgreen;
+  background-color: mediumaquamarine;
+  width: 120px;
+  height: 120px;
+  border-radius: 100px;
   padding: 10px;
   right: 5%;
   top: 5%;
+}
+
+.scoreNr {
+  font-size: 80px;
+  margin: 0 auto;
 }
 
 #choiceHeading {
@@ -36,7 +47,7 @@
   top: 30%;
   left: 30%;
   width: 120px;
-  height: 120px;
+  height: 110px;
   border-radius: 10px;
   background-color: lightgrey;
 }
@@ -46,7 +57,7 @@
   top: 30%;
   right: 30%;
   width: 120px;
-  height: 120px;
+  height: 110px;
   border-radius: 10px;
   background-color: lightgrey;
 }
@@ -59,7 +70,7 @@
   top: 55%;
   left: 25%;
   width: 55%;
-  height: 110px;
+  height: 120px;
   border-radius: 10px;
   background-color: lightgrey;
 }
@@ -76,7 +87,14 @@
 .selectButton {
   margin: 10px;
   width: 100px;
-  height: 90px;
+  height: 100px;
+  outline: none;
+  border: none;
+  border-radius: 50px;
+}
+
+.selectButton:focus {
+  background-color: mediumaquamarine;
 }
 
 .choiceImg {
