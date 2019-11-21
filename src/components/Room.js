@@ -2,25 +2,9 @@ import React from "react";
 import { connect } from "react-redux";
 import superagent from "superagent";
 import { Link } from "react-router-dom";
+import GameContainer from "./Game";
 
 class Room extends React.Component {
-  state = { categories: [], token: "" };
-
-  async componentDidMount() {
-    const response = await superagent.get(
-      "https://opentdb.com/api_token.php?command=request"
-    );
-    const token = response.body.token;
-    const categories = await superagent.get(
-      "https://opentdb.com/api_category.php"
-    );
-    const categoryNames = categories.body.trivia_categories.map(
-      category => category.name
-    );
-    console.log(categoryNames);
-    this.setState({ categories: categoryNames, token: token });
-  }
-
   onClick = async () => {
     const { name } = this.props.match.params;
     const { jwt } = this.props;
@@ -60,38 +44,36 @@ class Room extends React.Component {
       return <p>This room doesn't exist</p>;
     }
     const { users } = room;
-    if (users.length === 2 ) {
+    if (users.length === 2) {
       return (
         // <div>
         //   <p>This room is full!</p>
         //   <Link to="/lobby">Back to the lobby.</Link>
         // </div>
 
-        <p>
-          HERE GOES THE GAME Component
-        </p>
-
+        <div>
+          <GameContainer />
+        </div>
       );
     } else {
-
       const list =
-      users && users.length ? (
-        users.map(user => <p key={user.username}>{user.username}</p>)
+        users && users.length ? (
+          users.map(user => <p key={user.username}>{user.username}</p>)
         ) : (
           <p>This room has no users</p>
-          );
-          
-          return (
-            <div>
-        <h1>{name}</h1>
-        <button onClick={this.onClick}>Start game</button>
-        <button onClick={this.leaveRoom}>
-          <Link to="/lobby">Leave room</Link>
-        </button>
-        {list}
-      </div>
-    );
-  }
+        );
+
+      return (
+        <div>
+          <h1>{name}</h1>
+          <button onClick={this.onClick}>Start game</button>
+          <button onClick={this.leaveRoom}>
+            <Link to="/lobby">Leave room</Link>
+          </button>
+          {list}
+        </div>
+      );
+    }
   }
 }
 
