@@ -8,13 +8,14 @@ import LoginContainer from "./components/Login/";
 import Lobby from "./components/Lobby/";
 import UserContainer from "./components/User";
 import Room from "./components/Room";
+import Url from "./components/consts";
 
 class App extends React.Component {
-  // stream = new EventSource("http://localhost:4000/stream");
+  stream = new EventSource(`${Url}/stream`);
 
-  stream = new EventSource(
-    "https://evening-fortress-04185.herokuapp.com/stream"
-  );
+  // stream = new EventSource(
+  //   "https://evening-fortress-04185.herokuapp.com/stream"
+  // );
 
   componentDidMount() {
     this.stream.onmessage = event => {

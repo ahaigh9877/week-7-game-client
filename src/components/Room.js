@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import superagent from "superagent";
 import { Link } from "react-router-dom";
 import GameContainer from "./Game";
+import Url from "./consts";
 
 class Room extends React.Component {
   onClick = async () => {
@@ -14,8 +15,8 @@ class Room extends React.Component {
 
     if (users.length < 2) {
       await superagent
-        .put(`https://evening-fortress-04185.herokuapp.com/join/${name}`)
-        // .put(`http://localhost:4000/join/${name}`)
+        // .put(`https://evening-fortress-04185.herokuapp.com/join/${name}`)
+        .put(`${Url}/join/${name}`)
         .set({ authorization: `Bearer ${jwt}` });
     }
   };
@@ -25,8 +26,8 @@ class Room extends React.Component {
     const { jwt } = this.props;
 
     await superagent
-      .put(`https://evening-fortress-04185.herokuapp.com/join/${name}`)
-      // .put(`http://localhost:4000/leave/${name}`)
+      // .put(`https://evening-fortress-04185.herokuapp.com/join/${name}`)
+      .put(`${Url}/leave/${name}`)
       .set({ authorization: `Bearer ${jwt}` });
   };
 

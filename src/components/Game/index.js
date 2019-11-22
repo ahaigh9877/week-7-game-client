@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import Game from "./Game";
+import Url from "../consts";
 import superagent from "superagent";
 
 class GameContainer extends Component {
@@ -16,10 +17,10 @@ class GameContainer extends Component {
     const { username, jwt } = this.props.loggedin;
 
     await superagent
-      .put(
-        `https://evening-fortress-04185.herokuapp.com/game/${username}/${choice}`
-      )
-      //   .put(`http://localhost:4000/game/${username}/${choice}`)
+      //   .put(
+      //     `https://evening-fortress-04185.herokuapp.com/game/${username}/${choice}`
+      //   )
+      .put(`${Url}/game/${username}/${choice}`)
       .set({ authorization: `Bearer ${jwt}` })
       .send(choice);
 
