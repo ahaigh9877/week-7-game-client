@@ -64,15 +64,18 @@ class Game extends Component {
     } else if (user.previousChoice === other.previousChoice) {
       outcome = `${pictures[user.previousChoice]} ties with ${
         pictures[other.previousChoice]
-      }!`;
+      }!
+      Next round is ON!`;
     } else if (user.score > user.previousScore) {
       outcome = `${pictures[user.previousChoice]} beats ${
         pictures[other.previousChoice]
-      }!`;
+      }!
+      Next round is ON!`;
     } else if (other.score > other.previousScore) {
       outcome = `${pictures[user.previousChoice]} loses to ${
         pictures[other.previousChoice]
-      }!`;
+      }!
+      Next round is ON!`;
     } else {
       outcome = "";
     }
@@ -108,15 +111,21 @@ class Game extends Component {
             {pictures[other.previousChoice]}
           </div>
           <div id="choiceHeadingWrapper">
-            <h1 id="choiceHeading">make your choice...</h1>
+            <h2>First to 3 points WINS</h2>
+            <h1 id="choiceHeading">Choose wisely...</h1>
           </div>
-          <div id="roundOutcomeWrapper">
-            <h1 id="roundOutcome">
-              {/* {pictures[user.previousChoice]} */}
-              {outcome}
-              {/* {pictures[other.previousChoice]}! */}
-            </h1>
-          </div>
+
+          {user.choiceId !== null && other.choiceId === null && (
+            <div id="roundOutcomeWrapper">
+              <h1 id="roundOutcome">Waiting for your opponent</h1>
+            </div>
+          )}
+
+          {user.choiceId === null && other.choiceId === null && (
+            <div id="roundOutcomeWrapper">
+              <h1 id="roundOutcome">{outcome}</h1>
+            </div>
+          )}
 
           <div id="choicesWrapper">
             <div id="choiceCirclesWrapper">
@@ -141,9 +150,17 @@ class Game extends Component {
                 <img className="choiceImg" src={scissors} alt="choice 3" />
               </button>
             </div>
-            <button id="chooseButton" onClick={() => this.props.setChoice()}>
+            {user.choiceId === null && (
+              <button id="chooseButton" onClick={() => this.props.setChoice()}>
+                CHOOSE!
+              </button>
+            )}
+            {user.choiceId !== null && (
+              <button id="chooseButton">Wait!</button>
+            )}
+            {/* {user.choiceId === null && other.choiceId === null && <button id="chooseButton" onClick={() => this.props.setChoice()}>
               CHOOSE!
-            </button>
+            </button>} */}
           </div>
         </div>
       );

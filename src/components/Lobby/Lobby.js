@@ -24,10 +24,10 @@ class Lobby extends React.Component {
     });
     return (
       <div>
-        <p>Create new room</p>
+        <p>Games Lobby</p>
         <form onSubmit={this.props.onSubmit}>
           <label>
-            Name:
+            New Room:
             <input
               type="text"
               name="name"

@@ -6,7 +6,6 @@ import WelcomePage from "./components/WelcomePage/";
 import SignupContainer from "./components/Signup/";
 import LoginContainer from "./components/Login/";
 import Lobby from "./components/Lobby/";
-import UserContainer from "./components/User";
 import Room from "./components/Room";
 import Url from "./components/consts";
 
@@ -33,7 +32,6 @@ class App extends React.Component {
         <Route exact path="/" component={WelcomePage} />
         <Route path="/signup" component={SignupContainer} />
         <Route path="/login" component={LoginContainer} />
-        <Route path="/lobby" component={UserContainer} />
         <Route path="/lobby" component={Lobby} />
         <Route path="/room/:name" component={Room} />
       </div>
