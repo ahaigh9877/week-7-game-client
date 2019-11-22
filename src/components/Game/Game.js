@@ -41,21 +41,21 @@ class Game extends Component {
 
     const room = rooms.find(room => room.name === name);
 
-    const user = room.users.find(user => user.username === username);
-    const other = room.users.find(user => user.username !== username);
+    // const user = room.users.find(user => user.username === username);
+    // const other = room.users.find(user => user.username !== username);
 
-    // const user = {
-    //   username: "Player one",
-    //   score: 2,
-    //   previousScore: 1,
-    //   previousChoice: 2
-    // };
-    // const other = {
-    //   username: "Player two",
-    //   score: 1,
-    //   previousScore: 1,
-    //   previousChoice: 1
-    // };
+    const user = {
+      username: "Player one",
+      score: 3,
+      previousScore: 1,
+      previousChoice: 2
+    };
+    const other = {
+      username: "Player two",
+      score: 1,
+      previousScore: 1,
+      previousChoice: 1
+    };
 
     let outcome = null;
 
@@ -128,12 +128,14 @@ class Game extends Component {
               >
                 <img className="choiceImg" src={rock} alt="choice 2" />
               </button>
+
               <button
                 className="selectButton"
                 onClick={() => this.props.choose(1)}
               >
                 <img className="choiceImg" src={paper} alt="choice 1" />
               </button>
+
               <button
                 className="selectButton"
                 onClick={() => this.props.choose(3)}
@@ -152,10 +154,10 @@ class Game extends Component {
     if (user.score === 3) {
       return (
         <div id="gameWrapper">
-          <div id="player1Score">
+          <div id="player1FinalScoreWrapper">
             {user.username}'s score: {user.score}
           </div>
-          <div id="player2Score">
+          <div id="player2InfoWrapper">
             {other.username}'s score: {other.score}
           </div>
           <h1 id="choiceHeading">{user.username} is the winner :D</h1>
