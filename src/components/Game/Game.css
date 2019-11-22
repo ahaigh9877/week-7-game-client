@@ -99,11 +99,26 @@ body {
 
 #choiceHeading {
   font-family: "Luckiest Guy", sans-serif;
-  font-size: 55px;
-
+  font-size: 65px;
   width: 100%;
   color: #ff9154;
   text-shadow: 0 0 15px white;
+  animation-name: grow;
+  animation-duration: 0.7s;
+  animation-iteration-count: infinite;
+  transition: ease-in-out;
+}
+
+@keyframes grow {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+  100% {
+    transform: scale(1);
+  }
 }
 
 #roundOutcomeWrapper {
@@ -119,10 +134,6 @@ body {
 #roundOutcome {
   font-family: "Luckiest Guy", sans-serif;
   font-size: 40px;
-  /* position: absolute;
-  left: 0;
-  top: 38%;
-  width: 100%; */
   color: #ff9154;
   text-shadow: 0 0 10px white;
 }
@@ -155,10 +166,18 @@ body {
   outline: none;
   border: none;
   border-radius: 60px;
+  transition: 0.2s;
+}
+
+.selectButton:hover {
+  transition: 0.6s;
+  transform: scale(1.15);
+  box-shadow: inset 0 0 30px 5px #dfe6ff;
 }
 
 .selectButton:focus {
-  box-shadow: inset 0 0 27px 27px #dfe6ff;
+  background-color: #dfe6ff;
+  transform: scale(1.15);
 }
 
 #chooseButton {
@@ -169,8 +188,9 @@ body {
   border-radius: 40px;
   border: none;
   outline: none;
-  font-family: "Calistoga", sans-serif;
-  font-size: x-large;
+  font-family: "Luckiest Guy", sans-serif;
+  font-size: 40px;
+  padding-top: 12px;
   color: #ff9154;
   transition: 0.2s;
 }
@@ -187,8 +207,12 @@ body {
   margin: 10px;
 }
 
-.previousChoiceImg {
+.previousChoiceImgWrapper {
   position: relative;
   width: 75px;
   height: 75px;
+}
+
+.previousChoiceImgWrapper img {
+  width: 100%;
 }

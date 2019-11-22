@@ -7,7 +7,7 @@ import questionMark from "../../images/question.png";
 import { Link } from "react-router-dom";
 
 const pictures = {
-  0: questionMark,
+  0: "",
   1: "paper",
   2: "rock",
   3: "scissors"
@@ -19,7 +19,6 @@ class Game extends Component {
   };
 
   imageSwap = choice => {
-    console.log(" Choice: ", choice);
     if (choice === 1) {
       return paper;
     } else if (choice === 2) {
@@ -41,31 +40,39 @@ class Game extends Component {
     } = this.props;
 
     const room = rooms.find(room => room.name === name);
-    // const user = room.users.find(user => user.username === username);
-    // const other = room.users.find(user => user.username !== username);
 
-    const user = {
-      username: "Player one",
-      score: 2,
-      previousScore: 1,
-      previousChoice: 2
-    };
-    const other = {
-      username: "Player two",
-      score: 1,
-      previousScore: 1,
-      previousChoice: 1
-    };
+    const user = room.users.find(user => user.username === username);
+    const other = room.users.find(user => user.username !== username);
 
-    console.log("user score: ", user.score);
-    console.log("other score: ", other.score);
+    // const user = {
+    //   username: "Player one",
+    //   score: 2,
+    //   previousScore: 1,
+    //   previousChoice: 2
+    // };
+    // const other = {
+    //   username: "Player two",
+    //   score: 1,
+    //   previousScore: 1,
+    //   previousChoice: 1
+    // };
 
     let outcome = null;
 
-    if (user.score > user.previousScore) {
-      outcome = " beats ";
+    if (user.previousChoice === other.previousChoice) {
+      outcome = `${pictures[user.previousChoice]} ties with ${
+        pictures[other.previousChoice]
+      }!`;
+    } else if (user.score > user.previousScore) {
+      outcome = `${pictures[user.previousChoice]} beats ${
+        pictures[other.previousChoice]
+      }!`;
+    } else if (other.score > other.previousScore) {
+      outcome = `${pictures[user.previousChoice]} loses to ${
+        pictures[other.previousChoice]
+      }!`;
     } else {
-      outcome = " loses to ";
+      outcome = "";
     }
 
     if (user.score !== 3 && other.score !== 3) {
@@ -79,11 +86,9 @@ class Game extends Component {
             </div>
             <p className="scoreNr">{user.score}</p>
             You chose:
-            <img
-              className="previousChoiceImg"
-              src={this.imageSwap(user.previousChoice)}
-              alt="choice 1"
-            />
+            <div className="previousChoiceImgWrapper">
+              <img src={this.imageSwap(user.previousChoice)} alt="choice 1" />
+            </div>
             {pictures[user.previousChoice]}
           </div>
 
@@ -95,11 +100,9 @@ class Game extends Component {
             </div>
             <p className="scoreNr">{other.score}</p>
             They chose:
-            <img
-              className="previousChoiceImg"
-              src={this.imageSwap(other.previousChoice)}
-              alt="choice 2"
-            />
+            <div className="previousChoiceImgWrapper">
+              <img src={this.imageSwap(other.previousChoice)} alt="choice 2" />
+            </div>
             {pictures[other.previousChoice]}
           </div>
           <div id="choiceHeadingWrapper">
@@ -107,9 +110,9 @@ class Game extends Component {
           </div>
           <div id="roundOutcomeWrapper">
             <h1 id="roundOutcome">
-              {pictures[user.previousChoice]}
+              {/* {pictures[user.previousChoice]} */}
               {outcome}
-              {pictures[other.previousChoice]}!
+              {/* {pictures[other.previousChoice]}! */}
             </h1>
           </div>
 
@@ -117,15 +120,15 @@ class Game extends Component {
             <div id="choiceCirclesWrapper">
               <button
                 className="selectButton"
-                onClick={() => this.props.choose(1)}
-              >
-                <img className="choiceImg" src={paper} alt="choice 1" />
-              </button>
-              <button
-                className="selectButton"
                 onClick={() => this.props.choose(2)}
               >
                 <img className="choiceImg" src={rock} alt="choice 2" />
+              </button>
+              <button
+                className="selectButton"
+                onClick={() => this.props.choose(1)}
+              >
+                <img className="choiceImg" src={paper} alt="choice 1" />
               </button>
               <button
                 className="selectButton"
