@@ -1,0 +1,45 @@
+form {
+  margin: 2rem auto;
+  width: 50%;
+  min-width: 15rem;
+  padding: 1rem;
+  border: 2px solid rgb(23, 116, 202);
+  border-radius: 5px;
+}
+
+
+label {
+  display: inline-block;
+  width: 80%;
+  font-size: 1.3rem;
+  margin-bottom: 10px;
+}
+
+input{
+  text-align: center;
+  width: 80%;
+  box-sizing: border-box;
+  border: 2px solid white;
+  border-radius: 10px;
+  min-height: 2rem;
+  font-size: 1.2rem;
+  color: black;
+  background: #82e9c5;
+  outline: none;
+}
+
+button,input[type="submit"] {
+  padding: 0.5rem 1rem;
+  font: inherit;
+  border: 2px solid white;
+  border-radius: 10px;
+  background-color: #ff9054;
+  color: black;
+  cursor: pointer;
+  outline: none;
+}
+
+a {
+  text-decoration: none;
+  color: black;
+}
