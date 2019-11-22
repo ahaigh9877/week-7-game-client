@@ -59,7 +59,11 @@ class Game extends Component {
 
     let outcome = null;
 
-    if (user.previousChoice === other.previousChoice) {
+
+    if (user.previousChoice === 0  &&  other.previousChoice === 0) {
+      outcome = `Let's start the game :D`;
+    }
+    else if (user.previousChoice === other.previousChoice) {
       outcome = `${pictures[user.previousChoice]} ties with ${
         pictures[other.previousChoice]
       }!`;
