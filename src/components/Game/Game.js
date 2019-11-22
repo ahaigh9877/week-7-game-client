@@ -41,24 +41,24 @@ class Game extends Component {
     } = this.props;
 
     const room = rooms.find(room => room.name === name);
-    const user = room.users.find(user => user.username === username);
-    const other = room.users.find(user => user.username !== username);
+    // const user = room.users.find(user => user.username === username);
+    // const other = room.users.find(user => user.username !== username);
+
+    const user = {
+      username: "Player one",
+      score: 2,
+      previousScore: 1,
+      previousChoice: 2
+    };
+    const other = {
+      username: "Player two",
+      score: 1,
+      previousScore: 1,
+      previousChoice: 1
+    };
 
     console.log("user score: ", user.score);
     console.log("other score: ", other.score);
-
-    // const user = {
-    //   username: "YOU",
-    //   score: 2,
-    //   previousScore: 1,
-    //   previousChoice: 2
-    // };
-    // const other = {
-    //   username: "THEM",
-    //   score: 1,
-    //   previousScore: 1,
-    //   previousChoice: 1
-    // };
 
     let outcome = null;
 
@@ -71,12 +71,12 @@ class Game extends Component {
     if (user.score !== 3 && other.score !== 3) {
       return (
         <div id="gameWrapper">
-          <div id="player1ChoiceImageWrapper">
-            <p className="scoreText">
+          <div id="player1InfoWrapper">
+            <div className="scoreText">
               {user.username}'s
               <br />
               score:
-            </p>
+            </div>
             <p className="scoreNr">{user.score}</p>
             You chose:
             <img
@@ -87,12 +87,12 @@ class Game extends Component {
             {pictures[user.previousChoice]}
           </div>
 
-          <div id="player2ChoiceImageWrapper">
-            <p className="scoreText">
+          <div id="player2InfoWrapper">
+            <div className="scoreText">
               {other.username}'s
               <br />
               score:
-            </p>
+            </div>
             <p className="scoreNr">{other.score}</p>
             They chose:
             <img
@@ -102,17 +102,16 @@ class Game extends Component {
             />
             {pictures[other.previousChoice]}
           </div>
-
-          <h1 id="choiceHeading">
-            make your
-            <br />
-            choice...
-          </h1>
-          <h1 id="roundOutcome">
-            {pictures[user.previousChoice]}
-            {outcome}
-            {pictures[other.previousChoice]}!
-          </h1>
+          <div id="choiceHeadingWrapper">
+            <h1 id="choiceHeading">make your choice...</h1>
+          </div>
+          <div id="roundOutcomeWrapper">
+            <h1 id="roundOutcome">
+              {pictures[user.previousChoice]}
+              {outcome}
+              {pictures[other.previousChoice]}!
+            </h1>
+          </div>
 
           <div id="choicesWrapper">
             <div id="choiceCirclesWrapper">
