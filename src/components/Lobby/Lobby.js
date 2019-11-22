@@ -7,24 +7,42 @@ class Lobby extends React.Component {
 
     const roomsList = rooms.map(room => {
       if (room.users.length === 2) {
-        return <p>Room Name: {room.name} -- ROOM IS FULL</p>;
+        return (
+          <div key={room.name} className="roomNameWrapper">
+            <p className="roomName">{room.name}</p>
+            <p className="roomOccupancy">ROOM FULL</p>
+            <button className="deadButton">F U L L</button>
+          </div>
+        );
       } else if (room.users.length === 1) {
         return (
-          <p key={room.name}>
-            Room Name: <Link to={`/room/${room.name}`}>{room.name}</Link> 1/2 players
-          </p>
+          <div key={room.name} className="roomNameWrapper">
+            <p className="roomName">{room.name}</p>
+            <p className="roomOccupancy">One player waiting...</p>
+            <button className="wpButton">
+              <Link className="wpLink" to={`/room/${room.name}`}>
+                JOIN!
+              </Link>
+            </button>
+          </div>
         );
       } else {
         return (
-          <p key={room.name}>
-            Room Name: <Link to={`/room/${room.name}`}>{room.name}</Link>
-          </p>
+          <div key={room.name} className="roomNameWrapper">
+            <p className="roomName">{room.name}</p>
+            <p className="roomOccupancy">Room empty</p>
+            <button className="wpButton">
+              <Link className="wpLink" to={`/room/${room.name}`}>
+                JOIN!
+              </Link>
+            </button>
+          </div>
         );
       }
     });
     return (
       <div>
-        <p>Games Lobby</p>
+        <h1>Games Lobby</h1>
         <form onSubmit={this.props.onSubmit}>
           <label>
             New Room:

@@ -57,9 +57,13 @@ class Room extends React.Component {
       return (
         <div>
           <h1>{name}</h1>
-          <button onClick={() => this.onClick()}>Start game</button>
-          <button onClick={() => this.leaveRoom()}>
-            <Link to="/lobby">Leave room</Link>
+          <button className="wpButton" onClick={() => this.onClick()}>
+            Start game
+          </button>
+          <button className="wpButton" onClick={() => this.leaveRoom()}>
+            <Link className="wpLink" to="/lobby">
+              Leave room
+            </Link>
           </button>
           {list}
         </div>

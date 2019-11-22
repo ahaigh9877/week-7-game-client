@@ -27,8 +27,23 @@ input {
   outline: none;
 }
 
-/* button,input[type="submit"] {
+input[type="submit"] {
+  font-family: "Calistoga", sans-serif;
+  text-align: center;
+  width: 80%;
+  box-sizing: border-box;
+  border: 2px solid white;
+  border-radius: 10px;
+  min-height: 2rem;
+  font-size: 1.2rem;
+  color: black;
+  background: #ff9054;
+  outline: none;
+}
+
+.wpButton {
   padding: 0.5rem 1rem;
+  width: 100px;
   font: inherit;
   border: 2px solid white;
   border-radius: 10px;
@@ -38,7 +53,39 @@ input {
   outline: none;
 }
 
-a {
+.deadButton {
+  padding: 0.5rem 1rem;
+  width: 100px;
+  font: inherit;
+  border: 2px solid white;
+  border-radius: 10px;
+  background-color: grey;
+  color: black;
+  cursor: pointer;
+  outline: none;
+}
+
+.wpLink {
   text-decoration: none;
   color: black;
-} */
+}
+
+.roomNameWrapper {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin: 2rem auto;
+  width: 50%;
+  min-width: 15rem;
+  padding: 1rem;
+  border: 2px solid rgb(23, 116, 202);
+  border-radius: 5px;
+}
+
+.roomName,
+.roomOccupancy {
+  border: 2px solid black;
+  width: 250px;
+  padding: 10px;
+  margin: 10px;
+}

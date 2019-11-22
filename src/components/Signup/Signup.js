@@ -26,8 +26,10 @@ const Signup = props => {
         </label>
         <input type="submit" value="Sign Up" />
       </form>
-      <button>
-        <Link to={"/"}>Back to Welcome Page</Link>
+      <button className="wpButton">
+        <Link className="wpLink" to={"/"}>
+          Back to Welcome Page
+        </Link>
       </button>
     </div>
   );
