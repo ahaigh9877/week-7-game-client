@@ -1,65 +1,111 @@
+@import url("https://fonts.googleapis.com/css?family=Calistoga|Work+Sans|Luckiest+Guy&display=swap");
+
 #gameWrapper {
   position: relative;
-  margin: 20px auto;
-  border: 2px solid goldenrod;
-  background-color: lightgoldenrodyellow;
-  height: 600px;
+  display: flex;
+  justify-content: center;
+  margin: 80px auto;
+  background-image: linear-gradient(45deg, #c5d2ff, #dfe6ff, #c5d2ff);
+  border-radius: 30px;
+  height: 700px;
   width: 70%;
+  box-shadow: 0 0 35px 25px #66cdaa;
 }
 
 #player1Score {
-  position: absolute;
-  background-color: mediumaquamarine;
-  width: 120px;
-  height: 120px;
+  z-index: 5;
+  background-color: #66cdaa;
+  width: 140px;
+  height: 140px;
   border-radius: 100px;
-  padding: 10px;
+  padding: 30px 10px 10px 10px;
   left: 5%;
   top: 5%;
+  box-sizing: border-box;
 }
 
 #player2Score {
-  position: absolute;
-  background-color: mediumaquamarine;
-  width: 120px;
-  height: 120px;
+  z-index: 5;
+  background-color: #66cdaa;
+  width: 140px;
+  height: 140px;
   border-radius: 100px;
-  padding: 10px;
+  padding: 30px 10px 10px 10px;
   right: 5%;
   top: 5%;
+  box-sizing: border-box;
+}
+
+.scoreText {
+  margin-bottom: -8px;
+  font-family: "Calistoga", sans-serif;
+}
+
+body {
+  font-family: "Calistoga", sans-serif;
 }
 
 .scoreNr {
+  font-family: "Calistoga", sans-serif;
   font-size: 80px;
-  margin: 0 auto;
-}
-
-#choiceHeading {
-  position: absolute;
-  left: 0;
-  top: 10%;
-  width: 100%;
-  color: blue;
+  margin: 0 auto 8px auto;
+  color: whitesmoke;
 }
 
 #player1ChoiceImageWrapper {
   position: absolute;
-  top: 30%;
-  left: 30%;
-  width: 120px;
-  height: 110px;
-  border-radius: 10px;
-  background-color: lightgrey;
+  left: 6%;
+  top: 6%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: center;
+  padding: 25px;
+  width: 140px;
+  height: 310px;
+  border-radius: 70px;
+  background-color: #82e9c5;
+  box-sizing: border-box;
+  box-shadow: inset 0 0 50px 50px #66cdaa;
 }
 
 #player2ChoiceImageWrapper {
   position: absolute;
-  top: 30%;
-  right: 30%;
-  width: 120px;
-  height: 110px;
-  border-radius: 10px;
-  background-color: lightgrey;
+  right: 6%;
+  top: 6%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: center;
+  padding: 25px;
+  width: 140px;
+  height: 310px;
+  border-radius: 70px;
+  background-color: #82e9c5;
+  box-sizing: border-box;
+  box-shadow: inset 0 0 50px 50px #66cdaa;
+}
+
+#choiceHeading {
+  font-family: "Luckiest Guy", sans-serif;
+  font-size: 55px;
+  position: absolute;
+  left: 0;
+  top: 5%;
+  width: 100%;
+  color: #ff9154;
+  text-shadow: 0 0 15px white;
+}
+
+#roundOutcome {
+  font-family: "Luckiest Guy", sans-serif;
+  font-size: 40px;
+  position: absolute;
+  left: 0;
+  top: 38%;
+  width: 100%;
+  color: #ff9154;
+  text-shadow: 0 0 10px white;
 }
 
 #choicesWrapper {
@@ -68,33 +114,53 @@
   flex-direction: row;
   justify-content: space-around;
   top: 55%;
-  left: 25%;
-  width: 55%;
+  width: 65%;
+  height: 280px;
+  border-radius: 60px;
+  background-color: #82e9c5;
+  box-shadow: inset 0 0 50px 50px #66cdaa;
+}
+
+#choiceCirclesWrapper {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 90%;
+  margin-top: 20px;
+}
+
+.selectButton {
+  margin: 10px 10px 20px 10px;
+  width: 120px;
   height: 120px;
-  border-radius: 10px;
-  background-color: lightgrey;
+  outline: none;
+  border: none;
+  border-radius: 60px;
+}
+
+.selectButton:focus {
+  box-shadow: inset 0 0 27px 27px #dfe6ff;
 }
 
 #chooseButton {
   position: absolute;
   bottom: 10%;
-  left: calc(50% - 100px);
   width: 200px;
-  height: 60px;
-  font-size: x-large;
-}
-
-.selectButton {
-  margin: 10px;
-  width: 100px;
-  height: 100px;
-  outline: none;
+  height: 80px;
+  border-radius: 40px;
   border: none;
-  border-radius: 50px;
+  outline: none;
+  font-family: "Calistoga", sans-serif;
+  font-size: x-large;
+  color: #ff9154;
+  transition: 0.2s;
 }
 
-.selectButton:focus {
-  background-color: mediumaquamarine;
+#chooseButton:hover {
+  transition: 0.4s;
+  background-color: #c5d2ff;
+  box-shadow: 0 0 10px 10px white;
+  color: white;
 }
 
 .choiceImg {
@@ -102,7 +168,7 @@
   margin: 10px;
 }
 
-.questionMark {
+.previousChoiceImg {
   position: relative;
   margin-top: 10px;
   width: 75px;
