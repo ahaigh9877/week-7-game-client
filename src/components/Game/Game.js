@@ -209,7 +209,7 @@ class Game extends Component {
             <div className="winnerFinalScoreNr">{other.score}</div>
           </div>
           <div className="winnerHeadingWrapper">
-            <h1 className="winnerHeading">{other.username} is the winner :D</h1>
+            <h1 className="winnerHeading">{other.username} is the winner!</h1>
           </div>
           <button
             className="backToLobbyButton"

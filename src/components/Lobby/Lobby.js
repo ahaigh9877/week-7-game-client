@@ -43,9 +43,9 @@ class Lobby extends React.Component {
     return (
       <div>
         <h1>Games Lobby</h1>
-        <form onSubmit={this.props.onSubmit}>
+        <form autocomplete="off" onSubmit={this.props.onSubmit}>
           <label>
-            New Room:
+            New Room
             <input
               type="text"
               name="name"

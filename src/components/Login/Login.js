@@ -8,9 +8,9 @@ const Login = props => {
     return (
       <div>
         <h1 className="loginHeader">Welcome back, login to join a game</h1>
-        <form onSubmit={props.onSubmit}>
+        <form autocomplete="off" onSubmit={props.onSubmit}>
           <label>
-            Username:
+            Username
             <input
               type="text"
               name="username"
@@ -19,7 +19,7 @@ const Login = props => {
             />
           </label>
           <label>
-            Password:
+            Password
             <input
               type="password"
               name="password"

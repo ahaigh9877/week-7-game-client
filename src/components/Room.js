@@ -65,7 +65,10 @@ class Room extends React.Component {
               Leave room
             </Link>
           </button>
-          {list}
+          <div className="playerlist">
+            Players in this room:
+            {list}
+          </div>
         </div>
       );
     }

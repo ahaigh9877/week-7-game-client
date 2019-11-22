@@ -5,9 +5,9 @@ const Signup = props => {
   return (
     <div>
       <h1>Sign Up </h1>
-      <form onSubmit={props.onSubmit}>
+      <form autocomplete="off" onSubmit={props.onSubmit}>
         <label>
-          Username:
+          Username
           <input
             type="text"
             name="username"
@@ -16,7 +16,7 @@ const Signup = props => {
           />
         </label>
         <label>
-          Password:
+          Password
           <input
             type="password"
             name="password"
