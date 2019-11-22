@@ -166,18 +166,37 @@ body {
   outline: none;
   border: none;
   border-radius: 60px;
-  transition: 0.2s;
+  transition: 0.4s;
 }
 
 .selectButton:hover {
-  transition: 0.6s;
+  transition: 0.4s;
   transform: scale(1.15);
-  box-shadow: inset 0 0 30px 5px #dfe6ff;
+  box-shadow: inset 0 0 30px 5px #93aaff, 0 0 10px 10px white;
 }
 
 .selectButton:focus {
-  background-color: #dfe6ff;
+  transition: 1s;
+  background-color: #93aaff;
+  box-shadow: inset 0 0 30px 5px #93aaff, 0 0 10px 10px white;
   transform: scale(1.15);
+  animation-name: spin;
+  animation-duration: 1s;
+  animation-iteration-count: infinite;
+  animation-fill-mode: forwards;
+  animation-timing-function: linear;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg) scale(1.15);
+  }
+  50% {
+    transform: rotate(180deg) scale(1.15);
+  }
+  100% {
+    transform: rotate(360deg) scale(1.15);
+  }
 }
 
 #chooseButton {
@@ -197,6 +216,7 @@ body {
 
 #chooseButton:hover {
   transition: 0.4s;
+  transform: scale(1.1);
   background-color: #c5d2ff;
   box-shadow: 0 0 10px 10px white;
   color: white;
@@ -215,4 +235,160 @@ body {
 
 .previousChoiceImgWrapper img {
   width: 100%;
+}
+
+.winnerFinalScoreWrapper {
+  position: absolute;
+  left: 6%;
+  top: 6%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  padding: 25px;
+  width: 300px;
+  height: 300px;
+  border-radius: 150px;
+  background-color: #82e9c5;
+  box-sizing: border-box;
+  box-shadow: inset 0 0 50px 50px #66cdaa;
+}
+
+.winnerFinalScoreText {
+  font-size: 20px;
+  display: flex;
+  width: 150px;
+  color: #ff9154;
+}
+
+.winnerFinalScoreNr {
+  margin-top: -20px;
+  font-size: 110px;
+  color: #ff9154;
+  text-shadow: 3px 0 30px white, 0 3px 30px white, -3px 0 30px white,
+    0 -3px 30px white;
+  animation-name: winpulse;
+  animation-duration: 0.5s;
+  animation-iteration-count: infinite;
+  animation-timing-function: ease-in-out;
+}
+
+@keyframes winpulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.5);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.loserFinalScoreWrapper {
+  position: absolute;
+  right: 6%;
+  top: 6%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  padding: 25px;
+  width: 300px;
+  height: 300px;
+  border-radius: 150px;
+  background-color: grey;
+  box-sizing: border-box;
+}
+
+.loserFinalScoreText {
+  color: black;
+}
+
+.loserFinalScoreNr {
+  margin-top: -20px;
+  font-size: 60px;
+  color: black;
+}
+
+.winnerHeadingWrapper {
+  display: flex;
+  align-items: center;
+  justify-items: center;
+  position: absolute;
+  top: 40%;
+  width: 65%;
+  height: 30%;
+}
+
+.winnerHeading {
+  font-family: "Luckiest Guy", sans-serif;
+  font-size: 85px;
+  width: 100%;
+  color: #ffa16e;
+  -webkit-text-stroke: hotpink;
+  text-shadow: 5px 0 30px #82e9c5, 0 5px 30px magenta, -5px 0 30px cyan,
+    -5px 0 30px green, 0 0 30px white;
+  text-shadow: inset 0 0 10px#ffc2a1;
+  animation-name: winwobble;
+  animation-duration: 0.7s;
+  animation-iteration-count: infinite;
+  animation-timing-function: ease-in-out;
+}
+
+@keyframes winwobble {
+  0% {
+    transform: rotate(0deg) scale(1);
+  }
+  20% {
+    transform: rotate(18deg) scale(1);
+  }
+  25% {
+    transform: rotate(20deg) scale(1.15);
+  }
+  50% {
+    transform: rotate(0deg) scale(1.3);
+  }
+
+  75% {
+    transform: rotate(-20deg) scale(1.15);
+  }
+  80% {
+    transform: rotate(-18deg) scale(1);
+  }
+  /* 100% {
+    transform: rotate(0deg) scale(1);
+  } */
+}
+
+a {
+  text-decoration: none;
+  color: #ff9154;
+  transition: 0.2s;
+}
+
+a:hover {
+  transition: 0.4s;
+}
+
+#backToLobbyButton {
+  position: absolute;
+  bottom: 10%;
+  width: 400px;
+  height: 80px;
+  border-radius: 40px;
+  border: none;
+  outline: none;
+  font-family: "Luckiest Guy", sans-serif;
+  font-size: 40px;
+  padding-top: 12px;
+  color: #ff9154;
+  transition: 0.2s;
+}
+
+#backToLobbyButton:hover {
+  transition: 0.4s;
+  transform: scale(1.1);
+  background-color: #c5d2ff;
+  box-shadow: 0 0 10px 10px white;
 }

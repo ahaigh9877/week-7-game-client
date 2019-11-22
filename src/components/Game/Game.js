@@ -41,21 +41,21 @@ class Game extends Component {
 
     const room = rooms.find(room => room.name === name);
 
-    const user = room.users.find(user => user.username === username);
-    const other = room.users.find(user => user.username !== username);
+    // const user = room.users.find(user => user.username === username);
+    // const other = room.users.find(user => user.username !== username);
 
-    // const user = {
-    //   username: "Player one",
-    //   score: 3,
-    //   previousScore: 1,
-    //   previousChoice: 2
-    // };
-    // const other = {
-    //   username: "Player two",
-    //   score: 1,
-    //   previousScore: 1,
-    //   previousChoice: 1
-    // };
+    const user = {
+      username: "Player one",
+      score: 2,
+      previousScore: 1,
+      previousChoice: 2
+    };
+    const other = {
+      username: "Player two",
+      score: 3,
+      previousScore: 1,
+      previousChoice: 1
+    };
 
     let outcome = null;
 
@@ -152,14 +152,22 @@ class Game extends Component {
     if (user.score === 3) {
       return (
         <div id="gameWrapper">
-          <div id="player1FinalScoreWrapper">
-            {user.username}'s score: {user.score}
+          <div className="winnerFinalScoreWrapper">
+            <div className="winnerFinalScoreText">
+              {user.username}'s final score:
+            </div>
+            <div className="winnerFinalScoreNr">{user.score}</div>
           </div>
-          <div id="player2InfoWrapper">
-            {other.username}'s score: {other.score}
+          <div className="loserFinalScoreWrapper">
+            <div className="loserFinalScoreText">
+              {other.username}'s final score:
+            </div>
+            <div className="loserFinalScoreNr">{other.score}</div>
           </div>
-          <h1 id="choiceHeading">{user.username} is the winner :D</h1>
-          <button id="chooseButton" onClick={() => this.props.setChoice()}>
+          <div className="winnerHeadingWrapper">
+            <h1 className="winnerHeading">{user.username} is the winner :D</h1>
+          </div>
+          <button id="backToLobbyButton" onClick={() => this.props.setChoice()}>
             <Link to={"/lobby"}>Back to Lobby!</Link>
           </button>
         </div>
@@ -167,15 +175,24 @@ class Game extends Component {
     } else if (other.score === 3) {
       return (
         <div id="gameWrapper">
-          <div id="player1Score">
-            {user.username}'s score: {user.score}
+          <div className="loserFinalScoreWrapper">
+            <div className="loserFinalScoreText">
+              {user.username}'s final score:
+            </div>
+            <div className="loserFinalScoreNr">{user.score}</div>
           </div>
-          <div id="player2Score">
-            {other.username}'s score: {other.score}
+
+          <div className="winnerFinalScoreWrapper">
+            <div className="winnerFinalScoreText">
+              {other.username}'s final score:
+            </div>
+            <div className="winnerFinalScoreNr">{other.score}</div>
           </div>
-          <h1 id="choiceHeading">{other.username} is the winner :D</h1>
-          <button id="chooseButton" onClick={() => this.props.leaveRoom()}>
-            <Link>Back to Lobby!</Link>
+          <div className="winnerHeadingWrapper">
+            <h1 className="winnerHeading">{other.username} is the winner :D</h1>
+          </div>
+          <button id="backToLobbyButton" onClick={() => this.props.leaveRoom()}>
+            <Link to={"/lobby"}>Back to Lobby!</Link>
           </button>
         </div>
       );
