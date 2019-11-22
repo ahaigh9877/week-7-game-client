@@ -41,29 +41,27 @@ class Game extends Component {
 
     const room = rooms.find(room => room.name === name);
 
-    // const user = room.users.find(user => user.username === username);
-    // const other = room.users.find(user => user.username !== username);
+    const user = room.users.find(user => user.username === username);
+    const other = room.users.find(user => user.username !== username);
 
-    const user = {
-      username: "Player one",
-      score: 3,
-      previousScore: 1,
-      previousChoice: 2
-    };
-    const other = {
-      username: "Player two",
-      score: 1,
-      previousScore: 1,
-      previousChoice: 1
-    };
+    // const user = {
+    //   username: "Player one",
+    //   score: 3,
+    //   previousScore: 1,
+    //   previousChoice: 2
+    // };
+    // const other = {
+    //   username: "Player two",
+    //   score: 1,
+    //   previousScore: 1,
+    //   previousChoice: 1
+    // };
 
     let outcome = null;
 
-
-    if (user.previousChoice === 0  &&  other.previousChoice === 0) {
+    if (user.previousChoice === 0 && other.previousChoice === 0) {
       outcome = `Let's start the game :D`;
-    }
-    else if (user.previousChoice === other.previousChoice) {
+    } else if (user.previousChoice === other.previousChoice) {
       outcome = `${pictures[user.previousChoice]} ties with ${
         pictures[other.previousChoice]
       }!`;
