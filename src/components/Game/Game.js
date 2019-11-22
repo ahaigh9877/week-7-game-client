@@ -4,20 +4,31 @@ import paper from "../../images/paper.png";
 import rock from "../../images/rock.png";
 import scissors from "../../images/scissors.png";
 import questionMark from "../../images/question.png";
-import {Link} from 'react-router-dom'
+import { Link } from "react-router-dom";
 
 const pictures = {
-  0: questionMark,
-  1: paper,
-  2: rock,
-  3: scissors
-}
+  0: "",
+  1: "paper",
+  2: "rock",
+  3: "scissors"
+};
 class Game extends Component {
-
   state = {
     img1: pictures[0],
     img2: pictures[0]
-  }
+  };
+
+  imageSwap = choice => {
+    if (choice === 1) {
+      return paper;
+    } else if (choice === 2) {
+      return rock;
+    } else if (choice === 3) {
+      return scissors;
+    } else {
+      return questionMark;
+    }
+  };
 
   render() {
     const {
@@ -29,83 +40,142 @@ class Game extends Component {
     } = this.props;
 
     const room = rooms.find(room => room.name === name);
+
     const user = room.users.find(user => user.username === username);
-    const index = room.users.findIndex(user => user.username === username);
     const other = room.users.find(user => user.username !== username);
 
-    const [first, second] = room.users;
+    // const user = {
+    //   username: "Player one",
+    //   score: 2,
+    //   previousScore: 1,
+    //   previousChoice: 2
+    // };
+    // const other = {
+    //   username: "Player two",
+    //   score: 1,
+    //   previousScore: 1,
+    //   previousChoice: 1
+    // };
 
-    const imFirst = first === user;
-    console.log(first.choiceId, second.choiceId)
+    let outcome = null;
 
-    if (first.score !== 3 && second.score !== 3) {
+    if (user.previousChoice === other.previousChoice) {
+      outcome = `${pictures[user.previousChoice]} ties with ${
+        pictures[other.previousChoice]
+      }!`;
+    } else if (user.score > user.previousScore) {
+      outcome = `${pictures[user.previousChoice]} beats ${
+        pictures[other.previousChoice]
+      }!`;
+    } else if (other.score > other.previousScore) {
+      outcome = `${pictures[user.previousChoice]} loses to ${
+        pictures[other.previousChoice]
+      }!`;
+    } else {
+      outcome = "";
+    }
+
+    if (user.score !== 3 && other.score !== 3) {
       return (
         <div id="gameWrapper">
-          <div id="player1Score">
-            {first.username}'s score: {first.score}
+          <div id="player1InfoWrapper">
+            <div className="scoreText">
+              {user.username}'s
+              <br />
+              score:
+            </div>
+            <p className="scoreNr">{user.score}</p>
+            You chose:
+            <div className="previousChoiceImgWrapper">
+              <img src={this.imageSwap(user.previousChoice)} alt="choice 1" />
+            </div>
+            {pictures[user.previousChoice]}
           </div>
-          <div id="player2Score">
-            {second.username}'s score: {second.score}
+
+          <div id="player2InfoWrapper">
+            <div className="scoreText">
+              {other.username}'s
+              <br />
+              score:
+            </div>
+            <p className="scoreNr">{other.score}</p>
+            They chose:
+            <div className="previousChoiceImgWrapper">
+              <img src={this.imageSwap(other.previousChoice)} alt="choice 2" />
+            </div>
+            {pictures[other.previousChoice]}
           </div>
-  
-          <div id="player1ChoiceImageWrapper">
-            <img className="questionMark" src={this.state.img1} alt="choice 1" />
+          <div id="choiceHeadingWrapper">
+            <h1 id="choiceHeading">make your choice...</h1>
           </div>
-          <div id="player2ChoiceImageWrapper">
-            <img className="questionMark" src={this.state.img2} alt="choice 2" />
+          <div id="roundOutcomeWrapper">
+            <h1 id="roundOutcome">
+              {/* {pictures[user.previousChoice]} */}
+              {outcome}
+              {/* {pictures[other.previousChoice]}! */}
+            </h1>
           </div>
-  
-          <h1 id="choiceHeading">Make your choice</h1>
-  
+
           <div id="choicesWrapper">
-            <button className="selectButton" onClick={() => this.props.choose(1)}>
-              <img className="choiceImg" src={paper} alt="choice 1" />
-            </button>
-            <button className="selectButton" onClick={() => this.props.choose(2)}>
-              <img className="choiceImg" src={rock} alt="choice 2" />
-            </button>
-            <button className="selectButton" onClick={() => this.props.choose(3)}>
-              <img className="choiceImg" src={scissors} alt="choice 3" />
+            <div id="choiceCirclesWrapper">
+              <button
+                className="selectButton"
+                onClick={() => this.props.choose(2)}
+              >
+                <img className="choiceImg" src={rock} alt="choice 2" />
+              </button>
+              <button
+                className="selectButton"
+                onClick={() => this.props.choose(1)}
+              >
+                <img className="choiceImg" src={paper} alt="choice 1" />
+              </button>
+              <button
+                className="selectButton"
+                onClick={() => this.props.choose(3)}
+              >
+                <img className="choiceImg" src={scissors} alt="choice 3" />
+              </button>
+            </div>
+            <button id="chooseButton" onClick={() => this.props.setChoice()}>
+              CHOOSE!
             </button>
           </div>
-          <button id="chooseButton" onClick={() => this.props.setChoice()}>
-            CHOOSE!
-          </button>
         </div>
       );
     }
 
-    if (first.score === 3) {
+    if (user.score === 3) {
       return (
         <div id="gameWrapper">
           <div id="player1Score">
-            {first.username}'s score: {first.score}
+            {user.username}'s score: {user.score}
           </div>
           <div id="player2Score">
-            {second.username}'s score: {second.score}
+            {other.username}'s score: {other.score}
           </div>
-          <h1 id="choiceHeading">{first.username} is the winner :D</h1>
+          <h1 id="choiceHeading">{user.username} is the winner :D</h1>
           <button id="chooseButton" onClick={() => this.props.setChoice()}>
-            <Link to={'/lobby'}>Back to Lobby!</Link>
+            <Link to={"/lobby"}>Back to Lobby!</Link>
           </button>
         </div>
-      )
-      } else if (second.score === 3) {
-        return (
-          <div id="gameWrapper">
+      );
+    } else if (other.score === 3) {
+      return (
+        <div id="gameWrapper">
           <div id="player1Score">
-            {first.username}'s score: {first.score}
+            {user.username}'s score: {user.score}
           </div>
           <div id="player2Score">
-            {second.username}'s score: {second.score}
+            {other.username}'s score: {other.score}
           </div>
-          <h1 id="choiceHeading">{second.username} is the winner :D</h1>
+          <h1 id="choiceHeading">{other.username} is the winner :D</h1>
           <button id="chooseButton" onClick={() => this.props.leaveRoom()}>
             <Link>Back to Lobby!</Link>
           </button>
         </div>
-        )
-      }      
+      );
+    }
   }
 }
 
