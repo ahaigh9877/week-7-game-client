@@ -7,7 +7,6 @@ form {
   border-radius: 5px;
 }
 
-
 label {
   display: inline-block;
   width: 80%;
@@ -15,7 +14,7 @@ label {
   margin-bottom: 10px;
 }
 
-input{
+input {
   text-align: center;
   width: 80%;
   box-sizing: border-box;
@@ -28,7 +27,7 @@ input{
   outline: none;
 }
 
-button,input[type="submit"] {
+/* button,input[type="submit"] {
   padding: 0.5rem 1rem;
   font: inherit;
   border: 2px solid white;
@@ -42,4 +41,4 @@ button,input[type="submit"] {
 a {
   text-decoration: none;
   color: black;
-}
+} */

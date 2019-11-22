@@ -41,21 +41,21 @@ class Game extends Component {
 
     const room = rooms.find(room => room.name === name);
 
-    // const user = room.users.find(user => user.username === username);
-    // const other = room.users.find(user => user.username !== username);
+    const user = room.users.find(user => user.username === username);
+    const other = room.users.find(user => user.username !== username);
 
-    const user = {
-      username: "Player one",
-      score: 2,
-      previousScore: 1,
-      previousChoice: 2
-    };
-    const other = {
-      username: "Player two",
-      score: 3,
-      previousScore: 1,
-      previousChoice: 1
-    };
+    // const user = {
+    //   username: "Player one",
+    //   score: 2,
+    //   previousScore: 1,
+    //   previousChoice: 2
+    // };
+    // const other = {
+    //   username: "Player two",
+    //   score: 2,
+    //   previousScore: 1,
+    //   previousChoice: 2
+    // };
 
     let outcome = null;
 
@@ -110,8 +110,8 @@ class Game extends Component {
             </div>
             {pictures[other.previousChoice]}
           </div>
+          <h2>First to 3 points WINS</h2>
           <div id="choiceHeadingWrapper">
-            <h2>First to 3 points WINS</h2>
             <h1 id="choiceHeading">Choose wisely...</h1>
           </div>
 
@@ -155,9 +155,7 @@ class Game extends Component {
                 CHOOSE!
               </button>
             )}
-            {user.choiceId !== null && (
-              <button id="chooseButton">Wait!</button>
-            )}
+            {user.choiceId !== null && <button id="waitButton">Wait!</button>}
             {/* {user.choiceId === null && other.choiceId === null && <button id="chooseButton" onClick={() => this.props.setChoice()}>
               CHOOSE!
             </button>} */}
@@ -184,8 +182,13 @@ class Game extends Component {
           <div className="winnerHeadingWrapper">
             <h1 className="winnerHeading">{user.username} is the winner :D</h1>
           </div>
-          <button id="backToLobbyButton" onClick={() => this.props.setChoice()}>
-            <Link to={"/lobby"}>Back to Lobby!</Link>
+          <button
+            className="backToLobbyButton"
+            onClick={() => this.props.setChoice()}
+          >
+            <Link className="backToLobbyLink" to={"/lobby"}>
+              Back to Lobby!
+            </Link>
           </button>
         </div>
       );
@@ -208,8 +211,13 @@ class Game extends Component {
           <div className="winnerHeadingWrapper">
             <h1 className="winnerHeading">{other.username} is the winner :D</h1>
           </div>
-          <button id="backToLobbyButton" onClick={() => this.props.leaveRoom()}>
-            <Link to={"/lobby"}>Back to Lobby!</Link>
+          <button
+            className="backToLobbyButton"
+            onClick={() => this.props.leaveRoom()}
+          >
+            <Link className="backToLobbyLink" to={"/lobby"}>
+              Back to Lobby!
+            </Link>
           </button>
         </div>
       );
