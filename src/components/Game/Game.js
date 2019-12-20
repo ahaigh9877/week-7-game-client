@@ -41,21 +41,21 @@ class Game extends Component {
 
     const room = rooms.find(room => room.name === name);
 
-    const user = room.users.find(user => user.username === username);
-    const other = room.users.find(user => user.username !== username);
+    // const user = room.users.find(user => user.username === username);
+    // const other = room.users.find(user => user.username !== username);
 
-    // const user = {
-    //   username: "Player one",
-    //   score: 2,
-    //   previousScore: 1,
-    //   previousChoice: 2
-    // };
-    // const other = {
-    //   username: "Player two",
-    //   score: 2,
-    //   previousScore: 1,
-    //   previousChoice: 2
-    // };
+    const user = {
+      username: "Player one",
+      score: 2,
+      previousScore: 1,
+      previousChoice: 2
+    };
+    const other = {
+      username: "Player two",
+      score: 2,
+      previousScore: 1,
+      previousChoice: 2
+    };
 
     let outcome = null;
 

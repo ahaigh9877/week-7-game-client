@@ -1,4 +1,5 @@
 @import url("https://fonts.googleapis.com/css?family=Calistoga|Work+Sans|Luckiest+Guy&display=swap");
+@import url("https://fonts.fontself.com/gE309jx/gilbert-color-bold-preview5.css");
 
 #gameWrapper {
   position: relative;
@@ -337,7 +338,7 @@ body {
 }
 
 .winnerHeading {
-  font-family: "Luckiest Guy", sans-serif;
+  font-family: "gilbert-color-bold-preview5", sans-serif;
   font-size: 65px;
   width: 100%;
   color: #ffa16e;
