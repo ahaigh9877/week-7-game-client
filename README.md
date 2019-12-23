@@ -8,7 +8,7 @@
 
 - **[Introduction](#introduction)**
 - **[Getting started](#getting-started)**
-- **[Technologies used](#markdown-header)**
+- **[Technologies used](#technologies-used)**
 
 ## Introduction
 
@@ -18,9 +18,10 @@ We decided to build a rock-paper-scissors game that can be played by two players
 
 ## Getting started
 
-1. Clone the git repository into a new directory on your computer: `git clone git@github.com:ahaigh9877/week-7-game-client.git`
-2. Run `npm install` on your terminal to install all the dependendencies
-3. Run `npm start` to get a preview of the front-end
+1. If you have not yet done so, follow the _getting started_ instructions to set up the [server](https://github.com/ahaigh9877/week-7-game-server).
+2. Clone the git repository into a new directory on your computer: `git clone git@github.com:ahaigh9877/week-7-game-client.git`
+3. Run `npm install` on your terminal to install all the dependendencies
+4. Run `npm start` to get a preview of the front-end
 
 ## Technologies used
 
